@@ -113,7 +113,7 @@ else
 endif
 endif
 
-all: egod
+all: tgrd
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -151,11 +151,11 @@ obj/scrypt-x86.o: scrypt-x86.S
 obj/scrypt-x86_64.o: scrypt-x86_64.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
 
-egod: $(OBJS:obj/%=obj/%)
+tgrd: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 clean:
-	-rm -f egod
+	-rm -f tgrd
 	-rm -f obj/*.o
 	-rm -f obj/*.P
 	-rm -f obj/build.h
